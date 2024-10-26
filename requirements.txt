@@ -1,0 +1,11 @@
+fastapi
+uvicorn
+wheel
+sqlalchemy
+zope.sqlalchemy
+psycopg2-binary 
+psycopg2
+passlib 
+bcrypt 
+pydantic 
+python-jose
