@@ -1,19 +1,42 @@
-from sqlalchemy import Column, Integer, VARCHAR, create_engine
-from sqlalchemy.ext.declarative import declarative_base
-from sqlalchemy.orm import sessionmaker
+from datetime import datetime
 
-from app.settings import URL
+from sqlalchemy import Column, Integer, String, ForeignKey, DateTime
+from sqlalchemy.orm import relationship
+from app.database import Base
 
-engine = create_engine(URL)
-SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
-Base = declarative_base()
+class User(Base):
+    __tablename__ = 'user'
+    __table_args__ = {'schema': 'public'}
 
+    id = Column(Integer, primary_key=True)
+    name = Column(String, unique=True)
+    hashed_password = Column(String)
 
-class Users(Base):
-    __tablename__ = "users"
+class Bank(Base):
+    __tablename__ = 'bank'
+    __table_args__ = {'schema': 'public'}
 
-    id_user = Column(Integer, primary_key=True, comment='user id')
-    username = Column(VARCHAR(250), unique=True, nullable=False)
-    hashed_password = Column(VARCHAR(250))
+    id_bank = Column(Integer, primary_key=True)
+    bank_name = Column(String, unique=True)
 
-Base.metadata.create_all(bind=engine)
+class Transaction(Base):
+    __tablename__ = 'transaction'
+    __table_args__ = {'schema': 'public'}
+
+    id = Column(Integer, primary_key=True)
+
+    from_user = Column(String)
+    to_user = Column(String)
+
+    from_bank = Column(Integer, ForeignKey(Bank.id_bank))
+    to_bank = Column(Integer, ForeignKey(Bank.id_bank))
+
+    from_card_number = Column(String)
+    to_card_number = Column(String)
+
+    transaction_amount = Column(Integer)
+
+    transaction_time = Column(DateTime, default=datetime.utcnow())
+
+    from_bank_relation = relationship("Bank", primaryjoin="Bank.id_bank == Transaction.from_bank")
+    to_bank_relation = relationship("Bank", primaryjoin="Bank.id_bank == Transaction.to_bank")

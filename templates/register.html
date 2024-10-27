@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Register</title>
+    <script>
+        function redirectToLogin() {
+            setTimeout(function() {
+                window.location.href = "/login";
+            }, 3000);
+        }
+    </script>
+</head>
+<body>
+    <h2>Register</h2>
+    <form method="post">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required><br>
+        <br>
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" required><br>
+        <br>
+        <input type="submit" value="Submit">
+    </form>
+    {% if message %}
+    <p>{{ message }}</p>
+    {% endif %}
+    {% if redirect %}
+    <script>
+        redirectToLogin();
+    </script>
+    {% endif %}
+</body>
+</html>

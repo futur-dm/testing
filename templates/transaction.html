@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Transaction</title>
+</head>
+<body>
+    <h2>Create Transaction</h2>
+    <form method="post">
+        <label for="from_user">From (User):</label>
+        <input type="text" id="from_user" name="from_user" value="{{ from_user }}"><br>
+        <br>
+        <label for="to_user">To (User):</label>
+        <input type="text" id="to_user" name="to_user" required><br>
+        <br>
+        <label for="from_bank_name">From Bank:</label>
+        <input type="text" id="from_bank_name" name="from_bank_name" required><br>
+        <br>
+        <label for="to_bank_name">To Bank:</label>
+        <input type="text" id="to_bank_name" name="to_bank_name" required><br>
+        <br>
+        <label for="from_card_number">From Card Number:</label>
+        <input type="text" id="from_card_number" name="from_card_number" required><br>
+        <br>
+        <label for="to_card_number">To Card Number:</label>
+        <input type="text" id="to_card_number" name="to_card_number" required><br>
+        <br>
+        <label for="transaction_amount">Amount:</label>
+        <input type="number" id="transaction_amount" name="transaction_amount" required><br>
+        <br>
+        <input type="submit" value="Submit">
+    </form>
+    {% if message %}
+    <p>{{ message }}</p>
+    {% endif %}
+</body>
+</html>

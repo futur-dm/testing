@@ -6,6 +6,11 @@ zope.sqlalchemy
 psycopg2-binary 
 psycopg2
 passlib 
-bcrypt 
+bcrypt==4.0.1
 pydantic 
 python-jose
+databases
+asyncpg
+jinja2
+python-multipart
+aiosqlite

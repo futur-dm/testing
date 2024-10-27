@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script>
+        function redirectToTransaction(){
+            setTimeout(function() {
+                window.location.href = "/transaction";
+            }, 2000)
+        }
+    </script>
+</head>
+<body>
+    {% if message %}
+    <p>{{ message }}</p>
+    {% endif %}
+    {% if redirect %}
+    <script>
+        redirectToTransaction();
+    </script>
+    {% endif %}
+</body>
+</html>

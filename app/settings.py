@@ -1,12 +1,12 @@
 DATABASE = {
     'DATABASE_HOST': 'localhost',
-    'DATABASE_PORT': '5432',
-    'DATABASE_NAME': 'test',
-    'DATABASE_USER': 'test',
-    'DATABASE_PASSWORD': 'test',
+    'DATABASE_PORT': '32773',
+    'DATABASE_NAME': 'testing',
+    'DATABASE_USER': 'testing',
+    'DATABASE_PASSWORD': 'testing',
 }
 
-URL = "postgresql://{}:{}@{}:{}/{}".format(
+URL = "postgresql+asyncpg://{}:{}@{}:{}/{}".format(
     DATABASE['DATABASE_NAME'],
     DATABASE['DATABASE_PASSWORD'],
     DATABASE['DATABASE_HOST'],
@@ -17,3 +17,4 @@ URL = "postgresql://{}:{}@{}:{}/{}".format(
 
 SECRET_KEY = "d39913207720bda2e54a81d1d0030b8c5e3903b1ae79794e6bea7456b585bfb405447357d362aa929205be00f275d5ea43dfa301f7a7bce4a6b36ae05d14741306dda9b38f9a153be9cdb2a8767746e2e6bf05aa629518cf64a2ccd9c432a879"
 ALGORITHM = "HS256"
+ACCESS_TOKEN_EXPIRE_MINUTES = 40
